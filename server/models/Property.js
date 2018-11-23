@@ -6,6 +6,9 @@ const PropertySchema = new Schema({
   name: {
     type: String,
     require: true
+  },
+  img: {
+    type: String
   }
 });
 
