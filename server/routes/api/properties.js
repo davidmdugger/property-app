@@ -12,6 +12,17 @@ router.get("/test", (req, res) =>
   res.json({ msg: "properties test route is active" })
 );
 
+// @route   POST api/properties
+// @desc    CREATE a property
+// @access  Private
+router.post("/", (req, res) => {
+  const newProperty = new Property({
+    name: req.body.name,
+    img: req.body.img
+  });
+  newProperty.save().then(property => res.json(property));
+});
+
 // @route GET api/properties
 // @desc retrieves all properties
 // @access PUBLIC
