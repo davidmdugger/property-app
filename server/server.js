@@ -1,13 +1,25 @@
-import express from "express";
+const express = require("express"),
+  app = express(),
+  mongoose = require("mongoose"),
+  bodyParser = require("body-parser");
 
-const port = process.env.PORT || 5000;
+const port = 8080 || process.env.PORT;
 
-const app = express();
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
 
-app.get("/", (req, res) => {
-  res.json({
-    msg: "Works"
-  });
-});
+const properties = require("./routes/api/properties");
 
-app.listen(port, () => console.log(`SERVER IS RUNNING ON ${port}`));
+// DB CONFIG
+const db = require("./config/keys").mongoURI;
+
+// CONNECT TO MONGODB
+mongoose
+  .connect(db)
+  .then(() => console.log("mongoDB is connected"))
+  .catch(err => console.log(err));
+
+// use imported routes
+app.use("/api/properties", properties);
+
+app.listen(port, () => console.log(`Server is running on ${port}`));
