@@ -1,9 +1,16 @@
 import React from "react";
+import alGore404 from "../../img/al-gore-404.jpg";
+
+import "./NotFound.css";
 
 export default () => {
   return (
-    <div>
-      <h1>404 Not Found</h1>
+    <div className="not-found-wrapper">
+      <img
+        className="img"
+        src={alGore404}
+        alt="Al Gore, you broke the internent"
+      />
     </div>
   );
 };
