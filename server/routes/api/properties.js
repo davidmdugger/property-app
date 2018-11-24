@@ -27,9 +27,16 @@ router.post("/", (req, res) => {
 // @desc retrieves all properties
 // @access PUBLIC
 router.get("/", (req, res) => {
+  const errors = {};
   Property.find()
-    .then(properties => res.json(properties))
-    .catch(err => res.statusMessage(404).json({ notfound: "No properties" }));
+    .then(properties => {
+      if (!properties) {
+        errors.noProperties = "No properties found";
+        return res.status(404).json(errors);
+      }
+      res.json(properties);
+    })
+    .catch(err => res.status(404).json({ notfound: "No properties" }));
 });
 
 module.exports = router;

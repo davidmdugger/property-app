@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
 // components
 import Landing from "../Landing/Landing";
+import Properties from "../Properties/Properties";
 import NotFound from "../NotFound/NotFound";
 
 export default () => {
@@ -11,6 +12,7 @@ export default () => {
       <div>
         <Switch>
           <Route exact path="/" component={Landing} />
+          <Route exact path="/properties" component={Properties} />
           <Route path="/" component={NotFound} />
         </Switch>
       </div>
