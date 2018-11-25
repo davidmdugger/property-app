@@ -1,7 +1,7 @@
 import React from "react";
 import alGore404 from "../../img/al-gore-404.jpg";
 
-import "./NotFound.css";
+import "./NotFound.scss";
 
 export default () => {
   return (

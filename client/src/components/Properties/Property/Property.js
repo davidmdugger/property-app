@@ -1,6 +1,6 @@
 import React from "react";
 
-import "./Property.css";
+import "./Property.scss";
 
 export default ({ id, name, img }) => {
   return (
