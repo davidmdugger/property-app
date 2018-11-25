@@ -3,7 +3,11 @@ import { connect } from "react-redux";
 
 import { getProperties } from "../../actions/propertyActions";
 
+// components
 import spinner from "../../img/spinner.gif";
+import Property from "./Property/Property";
+
+import "./Properties";
 
 class Properties extends Component {
   componentDidMount() {
@@ -12,7 +16,6 @@ class Properties extends Component {
 
   render() {
     const { properties, isLoading } = this.props;
-    console.log(isLoading);
     let renderProperties;
     if (properties === null || isLoading) {
       renderProperties = (
@@ -26,10 +29,12 @@ class Properties extends Component {
       renderProperties =
         properties.length > 0 ? (
           properties.map(property => (
-            <div key={property._id}>
-              <h3>{property.name}</h3>
-              <img src={property.img} alt={property.name} />
-            </div>
+            <Property
+              id={property._id}
+              key={property._id}
+              name={property.name}
+              img={property.img}
+            />
           ))
         ) : (
           <h4>No properties found</h4>
@@ -39,7 +44,10 @@ class Properties extends Component {
     return (
       <div>
         <h1>Properties</h1>
-        {renderProperties}
+        <p className="properties-wrapper">
+          <small>Total: {properties.length}</small>
+        </p>
+        <div className="properties-wrapper">{renderProperties}</div>
       </div>
     );
   }

@@ -8,7 +8,8 @@ const PropertySchema = new Schema({
     require: true
   },
   img: {
-    type: String
+    type: String,
+    required: true
   }
 });
 

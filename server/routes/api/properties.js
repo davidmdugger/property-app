@@ -14,7 +14,7 @@ router.get("/test", (req, res) =>
 
 // @route   POST api/properties
 // @desc    CREATE a property
-// @access  Private
+// @access  PUBLIC
 router.post("/", (req, res) => {
   const newProperty = new Property({
     name: req.body.name,
@@ -36,7 +36,16 @@ router.get("/", (req, res) => {
       }
       res.json(properties);
     })
-    .catch(err => res.status(404).json({ notfound: "No properties" }));
+    .catch(err => res.status(404).json({ notfound: "No properties found" }));
+});
+
+// @route GET api/properties
+// @desc retrieves all properties
+// @access PUBLIC
+router.get("/:id", (req, res) => {
+  Property.findById(req.params.id)
+    .then(property => res.json(property))
+    .catch(err => res.json({ notfound: "No Property found" }));
 });
 
 module.exports = router;

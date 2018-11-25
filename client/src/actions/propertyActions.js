@@ -1,19 +1,30 @@
-import { GET_PROPERTIES, PROPERTY_LOADING } from "./types";
+import { GET_PROPERTIES, PROPERTY_LOADING, CREATE_PROPERTY } from "./types";
 import axios from "axios";
 
 export const getProperties = () => async dispatch => {
   dispatch(isLoading());
-  setTimeout(() => {
-    axios
-      .get("api/properties")
-      .then(res =>
-        dispatch({
-          type: GET_PROPERTIES,
-          payload: res.data
-        })
-      )
-      .catch(err => console.log("err: ", err));
-  }, 2000);
+
+  axios
+    .get("api/properties")
+    .then(res =>
+      dispatch({
+        type: GET_PROPERTIES,
+        payload: res.data
+      })
+    )
+    .catch(err => console.log("err: ", err));
+};
+
+export const createProperty = propertyData => dispatch => {
+  axios
+    .post("/api/properties", propertyData)
+    .then(res =>
+      dispatch({
+        type: CREATE_PROPERTY,
+        payload: res.data
+      })
+    )
+    .catch(err => console.log(err));
 };
 
 export const isLoading = () => {
