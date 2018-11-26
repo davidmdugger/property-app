@@ -20,7 +20,15 @@ router.post("/", (req, res) => {
     name: req.body.name,
     img: req.body.img
   });
-  newProperty.save().then(property => res.json(property));
+
+  newProperty
+    .save()
+    .then(property => res.json(property))
+    .catch(err =>
+      res
+        .status(500)
+        .json({ msg: "Your property could not be saved. Please try again" })
+    );
 });
 
 // @route GET api/properties
@@ -41,12 +49,23 @@ router.get("/", (req, res) => {
 });
 
 // @route GET api/properties
+// @desc retrieves all properties
+// @access PUBLIC
+router.get("/:id", (req, res) => {
+  Property.findById(req.params.id)
+    .then(property => res.json(property))
+    .catch(err =>
+      res.status(404).json({ msg: "This property cannot be found" })
+    );
+});
+
+// @route GET api/properties
 // @desc retrieves a single property
 // @access PUBLIC
 router.get("/:id", (req, res) => {
   Property.findById(req.params.id)
     .then(property => res.json(property))
-    .catch(err => res.json({ notfound: "No Property found" }));
+    .catch(err => res.status(404).json({ notfound: "No Property found" }));
 });
 
 // @route DELETE api/properties/:id
