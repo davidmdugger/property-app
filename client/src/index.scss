@@ -1,5 +1,33 @@
-* {
+*,
+*::before,
+*::after {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+// COLORS
+$color-gold: #c99963;
+$color-dark-blue: #101d2c;
+$color-dark-grey: #343434;
+$color-eggshell: #e6e6e6;
+
+// FONTS
+$font-text: "Nunito", sans-serif;
+$font-headings: "Josefin Sans", sans-serif;
+
+body {
+  font-family: $font-text;
+  width: 100%;
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: $font-headings;
 }
