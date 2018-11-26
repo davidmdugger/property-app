@@ -1,4 +1,9 @@
-import { GET_PROPERTIES, PROPERTY_LOADING, CREATE_PROPERTY } from "./types";
+import {
+  GET_PROPERTIES,
+  PROPERTY_LOADING,
+  CREATE_PROPERTY,
+  DELETE_PROPERTY
+} from "./types";
 import axios from "axios";
 
 export const getProperties = () => async dispatch => {
@@ -25,6 +30,23 @@ export const createProperty = propertyData => dispatch => {
       })
     )
     .catch(err => console.log(err));
+};
+
+// DELETE PROPERTY
+export const deleteProperty = id => dispatch => {
+  if (
+    window.confirm("Are you sure? Deleting this property cannot be undone.")
+  ) {
+    axios
+      .delete(`/api/properties/${id}`)
+      .then(
+        dispatch({
+          type: DELETE_PROPERTY,
+          payload: id
+        })
+      )
+      .catch(err => console.log(err));
+  }
 };
 
 export const isLoading = () => {

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 
-import { getProperties } from "../../actions/propertyActions";
+import { getProperties, deleteProperty } from "../../actions/propertyActions";
 
 // components
 import spinner from "../../img/spinner.gif";
@@ -13,6 +13,10 @@ class Properties extends Component {
   componentDidMount() {
     this.props.getProperties();
   }
+
+  deletePropertyHandler = id => {
+    this.props.deleteProperty(id);
+  };
 
   render() {
     const { properties, isLoading } = this.props;
@@ -34,6 +38,7 @@ class Properties extends Component {
               key={property._id}
               name={property.name}
               img={property.img}
+              deleteProperty={this.deletePropertyHandler}
             />
           ))
         ) : (
@@ -60,5 +65,5 @@ const mapStateToProps = state => ({
 
 export default connect(
   mapStateToProps,
-  { getProperties }
+  { getProperties, deleteProperty }
 )(Properties);

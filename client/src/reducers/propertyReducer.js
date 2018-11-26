@@ -1,7 +1,8 @@
 import {
   GET_PROPERTIES,
   PROPERTY_LOADING,
-  CREATE_PROPERTY
+  CREATE_PROPERTY,
+  DELETE_PROPERTY
 } from "../actions/types";
 
 const initialState = {
@@ -27,6 +28,13 @@ export default (state = initialState, action) => {
         ...state,
         properties: action.payload,
         isLoading: false
+      };
+    case DELETE_PROPERTY:
+      return {
+        ...state,
+        properties: state.properties.filter(
+          property => property._id !== action.payload
+        )
       };
     default:
       return state;

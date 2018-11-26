@@ -29,6 +29,7 @@ router.post("/", (req, res) => {
 router.get("/", (req, res) => {
   const errors = {};
   Property.find()
+    .sort({ date: -1 })
     .then(properties => {
       if (!properties) {
         errors.noProperties = "No properties found";
@@ -40,12 +41,22 @@ router.get("/", (req, res) => {
 });
 
 // @route GET api/properties
-// @desc retrieves all properties
+// @desc retrieves a single property
 // @access PUBLIC
 router.get("/:id", (req, res) => {
   Property.findById(req.params.id)
     .then(property => res.json(property))
     .catch(err => res.json({ notfound: "No Property found" }));
+});
+
+// @route DELETE api/properties/:id
+// @desc destroys a single property
+// @access PUBLIC
+router.delete("/:id", (req, res) => {
+  Property.findById(req.params.id)
+    .then(property => property.remove())
+    .then(() => res.json({ success: true }))
+    .catch(err => res.status(404).json({ postnotfound: "Post not found" }));
 });
 
 module.exports = router;
