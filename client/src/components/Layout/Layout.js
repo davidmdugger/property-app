@@ -16,7 +16,7 @@ export default () => {
           <nav>
             <ul>
               <li>
-                <Link to="properties/create">Create</Link>
+                <Link to="/properties/create">Create</Link>
               </li>
             </ul>
           </nav>
