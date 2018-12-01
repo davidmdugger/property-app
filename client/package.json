@@ -63,7 +63,6 @@
     "webpack-manifest-plugin": "2.0.4",
     "workbox-webpack-plugin": "3.6.3"
   },
-  "proxy": "http://localhost:8080",
   "scripts": {
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
@@ -122,6 +121,7 @@
       "node"
     ]
   },
+  "proxy": "http://localhost:8080",
   "babel": {
     "presets": [
       "react-app"

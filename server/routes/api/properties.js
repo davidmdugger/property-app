@@ -18,7 +18,11 @@ router.get("/test", (req, res) =>
 router.post("/", (req, res) => {
   const newProperty = new Property({
     name: req.body.name,
-    img: req.body.img
+    img: req.body.img,
+    ba: req.body.ba,
+    br: req.body.br,
+    price: req.body.price,
+    sqft: req.body.sqft
   });
 
   newProperty

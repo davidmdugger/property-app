@@ -2,7 +2,8 @@ import {
   GET_PROPERTIES,
   PROPERTY_LOADING,
   CREATE_PROPERTY,
-  DELETE_PROPERTY
+  DELETE_PROPERTY,
+  GET_PROPERTY
 } from "../actions/types";
 
 const initialState = {
@@ -28,6 +29,12 @@ export default (state = initialState, action) => {
         ...state,
         properties: action.payload,
         isLoading: false
+      };
+    case GET_PROPERTY:
+      return {
+        ...state,
+        property: action.payload,
+        loading: false
       };
     case DELETE_PROPERTY:
       return {

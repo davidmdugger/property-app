@@ -2,18 +2,35 @@ import {
   GET_PROPERTIES,
   PROPERTY_LOADING,
   CREATE_PROPERTY,
-  DELETE_PROPERTY
+  DELETE_PROPERTY,
+  GET_PROPERTY
 } from "./types";
 import axios from "axios";
 
-export const getProperties = () => async dispatch => {
+const api = "http://localhost:8080";
+
+export const getProperties = () => dispatch => {
   dispatch(isLoading());
 
   axios
-    .get("api/properties")
+    .get("/api/properties")
     .then(res =>
       dispatch({
         type: GET_PROPERTIES,
+        payload: res.data
+      })
+    )
+    .catch(err => console.log("err: ", err));
+};
+
+export const getProperty = id => async dispatch => {
+  dispatch(isLoading());
+
+  await axios
+    .get(`/api/properties/${id}`)
+    .then(res =>
+      dispatch({
+        type: GET_PROPERTY,
         payload: res.data
       })
     )

@@ -5,7 +5,7 @@ import { getProperties, deleteProperty } from "../../actions/propertyActions";
 
 // components
 import spinner from "../../img/spinner.gif";
-import Property from "./Property/Property";
+import PropertyItem from "./PropertyItem/PropertyItem";
 
 import "./Properties";
 
@@ -33,7 +33,7 @@ class Properties extends Component {
       renderProperties =
         properties.length > 0 ? (
           properties.map(property => (
-            <Property
+            <PropertyItem
               id={property._id}
               key={property._id}
               name={property.name}

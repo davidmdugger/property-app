@@ -10,6 +10,18 @@ const PropertySchema = new Schema({
   img: {
     type: String,
     required: true
+  },
+  ba: {
+    type: String
+  },
+  br: {
+    type: String
+  },
+  price: {
+    type: Number
+  },
+  sqft: {
+    type: Number
   }
 });
 

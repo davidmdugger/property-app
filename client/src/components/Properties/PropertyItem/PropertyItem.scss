@@ -1,21 +1,11 @@
 @import "../../../index.scss";
 
-$color-secondary: #343434;
-
 .property {
   display: inline-block;
   width: 250px;
   margin: 5px 10px;
-}
-
-.property {
   .img-wrapper {
     position: relative;
-  }
-}
-
-.property {
-  .img-wrapper {
     .show {
       position: absolute;
       top: 0;
@@ -29,71 +19,44 @@ $color-secondary: #343434;
       transform: scale(0);
       transition: linear 200ms;
     }
-  }
-}
-.property {
-  .img-wrapper {
     &:hover {
       .show {
         transform: scale(1);
+        span {
+          background-color: $color-dark-blue;
+          padding: 3px 7px;
+          font-weight: 700;
+          border-radius: 3px;
+        }
       }
     }
   }
-}
-
-.property {
-  .img-wrapper {
-    .show {
-      span {
-        background-color: $color-secondary;
-        color: #e6e6e6;
-        padding: 3px 7px;
-        font-weight: 700;
-        border-radius: 3px;
-      }
-    }
-  }
-}
-
-.property {
   img {
     width: 100%;
   }
-}
-
-.property {
   .content {
-    background-color: #eee;
+    background-color: $color-gold;
     margin-top: -25px;
     padding-top: 40px;
   }
-}
-
-.property {
   .name {
     width: 90%;
     position: relative;
     z-index: 5;
-    color: #fff;
-    background-color: #454545;
+    color: $color-eggshell;
+    background-color: $color-dark-blue;
     text-align: center;
     padding: 5px;
     margin: -15px auto 0 auto;
   }
-}
-
-.property {
   .data {
     display: flex;
     justify-content: space-between;
     text-align: center;
-  }
-}
-.property {
-  .data {
     p {
       padding: 8px;
       width: 50%;
+      color: $color-dark-blue;
     }
   }
 }
